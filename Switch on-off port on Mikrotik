@@ -1,0 +1,7 @@
+if ([/interface ethernet get ether4 running]=true) do={
+  
+    #Switch on Port
+    /interface enable ether3
+  } else={
+    #Switch off Port
+    /interface disable ether3
