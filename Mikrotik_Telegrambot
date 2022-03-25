@@ -1,0 +1,1 @@
+Invoke-RestMethod -Uri ("https://api.telegram.org/bot12345/sendMessage?chat_id=-678895&text=<b>Help</b> %0AHELP&parse_mode=html")
