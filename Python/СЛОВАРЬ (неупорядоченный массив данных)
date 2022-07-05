@@ -1,0 +1,195 @@
+СЛОВАРЬ (неупорядоченный массив данных)
+
+ipaddress = {"R1":"10.1.1.1", "R2":"10.1.1.2"} #создали словарь
+ipaddress["R3"] = "10.1.1.0" #добавили значение в словарь
+ipaddress["S1"] = "10.1.1.3" #добавили значение в словарь
+ipaddress["R3"] = ["10.1.2.3","10.2.2.3","10.3.3.3"] #добавили список в словарь
+print(ipaddress)
+
+print("R3" in ipaddress) #определили есть ли такое значение в словаре
+
+
+вывод 
+{'R1': '10.1.1.1', 'R2': '10.1.1.2', 'R3': ['10.1.2.3', '10.2.2.3', '10.3.3.3'], 'S1': '10.1.1.3'}
+True
+----------------------------------------------------------------------
+ЛИСТ (упорядоченный массив данных)
+ipaddress = ["R1","R2"] #создали лист
+ipaddress[0] = "RTR" #заменили значение в листе
+del ipaddress[1]  #удаление из листа
+print(ipaddress)
+
+routers = ["R1","R2"] #создали лист
+ipaddress = {"R1":"10.1.1.1", "R2":["10.1.2.3","10.2.2.2"]}
+print(ipaddress)
+print(routers)
+print(ipaddress["R2"][1])
+
+вывод 
+{'R1': '10.1.1.1', 'R2': ['10.1.2.3', '10.2.2.2']}
+['R1', 'R2']
+10.2.2.2
+----------------------------------------------------------------------
+
+firstname = input("What is you name? ")
+print("Hello " + firstname + "!")
+-----------------------------------------------------------------------
+firstname = input("What is you firstname? ")
+lastname = input("What is you lastname? ")
+location = input("What is you location? ")
+age: str = input("How old are you? ")
+space = " "
+print("Hello " + firstname  + space + lastname + space + "You are the" + space + age + space + "you are frome" + location + "!")
+
+вывод 
+What is you firstname? Maria
+What is you lastname? Kha
+What is you location? Novik
+How old are you? 39
+Hello Maria Kha You are the39 you are fromeNovik!
+----------------------------------------------------------------------
+nativeVLAN = 100
+dataVLAN = 100
+if nativeVLAN == dataVLAN:
+ print("The native VLAN and the data VLAN are the same.")
+else:
+ print("The native VLAN and data VlAN are different")
+----------------------------------------------------------------------
+ aclNum = int(input("What is the IPv4 ACL number? "))
+if aclNum >= 1 and aclNum <= 99:
+ print("This is a standard IPv4 ACL.")
+elif aclNum >=100 and aclNum <= 199:
+ print("This is a extended IPv4 ACL.")
+else:
+ print("This is not a standard or extended IPv4 ACL.")
+
+ ----------------------------------------------------------------------
+ devices=["R1","R2","R3","S1","S2"]
+for item in devices:
+ print(item)
+
+ out 
+ R1
+R2
+R3
+S1
+S2
+-----------------------------------------------------------------------
+devices=["R1","R2","R3","S1","S2"]
+for item in devices:
+ if "R" in item:
+  print(item)
+
+
+  out 
+-------------------------------------------------------------------------
+import os
+
+sayt = input('Inpit address ')
+if 'http://' in sayt:
+    os.system("open -u" + sayt)
+    print('if')
+
+elif 'www.' in sayt:
+    sayt = 'http://' + sayt
+    os.system("open -u" + sayt)
+    print('elif')
+
+else:
+    sayt = 'http://www.' + sayt
+    os.system("open -u" + sayt)
+    print('else')
+
+# оператор open -u может писаться как open http://url.com то есть указываться адрес сайта, который надо открыть
+
+Чтоби сделать цікл бесконечним
+
+import os
+while True
+    sayt = input('Inpit address\n ')
+    if sayt == 'Finish':
+        break   #то после введенія Finish цікл останавлівается
+
+    if 'http://' in sayt:
+        os.system("open -u" + sayt)
+        print('if')
+
+    elif 'www.' in sayt:
+        sayt = 'http://' + sayt
+        os.system("open -u" + sayt)
+        print('elif')
+
+    else:
+        sayt = 'http://www.' + sayt
+        os.system("open -u" + sayt)
+        print('else')
+------------------------------------------------------------------------------
+#считаем факториал числа
+while True: # бесконечный цикл
+    x = int(input())
+    count = 0
+    y = 1
+
+    while count < x:
+        count += 1
+        y *= count
+    else:
+        print(y)  
+
+>>> 5
+120
+7
+5040
+8
+40320
+---------------------------------------------------------------------------------
+x = ''
+
+while len(x) < 5: #длину значения х
+    y = input('Put your:  ')
+    x += y #добавляет к значени х значение у пока не достигнет 5
+
+else:
+    print(x)
+
+>>> 
+Put your:  к
+Put your:  о
+Put your:  л
+Put your:  н
+Put your:  п
+колнп
+
+>>>
+Put your:  1
+Put your:  2
+Put your:  3
+Put your:  4
+Put your:  5
+12345
+
+>>>
+Put your:  1
+Put your:  2345
+12345
+________________________________________________________________________________
+x = ''
+
+while len(x) < 5: #длину значения х
+    y = input('Put your:  ')
+    if y == 'o':
+        continue #еслі пользователь введет О? то цікл продолжітся? но О в слово не добавіться/
+    if y == 'l':
+        break #еслі пользователь введет букву l? то цікл прервется
+    x += y #добавляет к значени х значение у пока не достигнет 5
+
+else:
+    print(x)
+
+>>>
+Put your:  o
+Put your:  o
+Put your:  o
+Put your:  oooolpool
+oooolpool
+----------------------------------------------------------------------------------
