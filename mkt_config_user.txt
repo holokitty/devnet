@@ -1,0 +1,45 @@
+
+#+++++++++++++Everything below can be copied to the mikrotik config+++++++++++++
+
+
+/ip pool
+add name=l2tp_pool ranges=172.12.12.0/24
+
+/ppp profile
+add change-tcp-mss=yes dns-server=172.12.12.1 local-address=172.12.12.1 name=l2tp remote-address=l2tp_pool
+
+#+++++++++++++ipsec PASSWOR is FOV0RTp45yI36PWQJHh8iZqX+++++++++++++
+/interface l2tp-server server
+set authentication=mschap2 ipsec-secret=FOV0RTp45yI36PWQJHh8iZqX use-ipsec=yes
+
+
+/ip firewall filter
+add action=accept chain=input comment=L2tp_ports_access dst-port=500,1701,4500 in-interface=ether1 protocol=udp
+add action=accept chain=input comment=winbox_access dst-port=8921 in-interface=ether1 protocol=tcp
+add action=accept chain=input connection-state=established in-interface=ether1
+add action=accept chain=input connection-state=related in-interface=ether1
+add action=drop chain=input disabled=yes in-interface=ether1
+
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=ether1
+
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set www disabled=yes
+set ssh disabled=yes
+set api disabled=yes
+set api-ssl disabled=yes
+
+/ppp secret
+add name=user1 password=b40VDw7XLh5l3Pkm profile=l2tp
+add name=user2 password=mIJfuY49V5ZCx83o profile=l2tp
+add name=user3 password=txEHQcf2ewR50liN profile=l2tp
+add name=user4 password=Wu5sgj9QdOJMyNne profile=l2tp
+add name=user5 password=nFgAla5CPdfMHK6J profile=l2tp
+add name=user6 password=OA7tc6n5lrfMvTjW profile=l2tp
+add name=user7 password=Yor94VHU8aRBvK2D profile=l2tp
+add name=user8 password=1ANyX4pbBciZR08o profile=l2tp
+add name=user9 password=GlP9cfxZpMoYrFka profile=l2tp
+add name=user10 password=QgtT4VCJ531O27Gc profile=l2tp
+

@@ -12,3 +12,8 @@ sshCli = ConnectHandler(**mikrotik_router_1)
 output = sshCli.send_command("/ip address print")
 print(output)
 sshCli.disconnect()
+
+
+dtyghjn jm,
+
+

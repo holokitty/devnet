@@ -1,9 +1,10 @@
 server_ip_addr = input('Input Ip address server`s of VPN (WAN interface) formate x.x.x.x: ')
 client_prefix = input('Input name of user: ') # Input user`s name
-count_of_clients = input('Enter number of clients VPN: ') # Enter the number of VPN clients
-ip_addr = input('Enter the IP address and mask for the VPN pool addresses in the format z.z.z.z/y (example 10.9.7.0/28): ') #Enter the subnet for the pool
+count_of_clients = input('Enter count of clients VPN: ') # Enter the number of VPN clients
+ip_addr = input('Enter the IP address and mask for the VPN pool addresses in the format z.z.z.z/y (example 10.9.7.0/28): ')
+#Enter the subnet for the pool
 addr, mask = ip_addr.split('/')
-octet_1, octet_2, octet_3, octet4 = addr.split(".")
+octet_1, octet_2, octet_3, octet_4 = addr.split(".")
 
 import random
 import string
@@ -20,7 +21,7 @@ def generate_password(length):
 
 from random import randint #Connecting the random number generator
 
-ipsec_pwd = generate_password(randint(8,12))
+ipsec_pwd = generate_password(randint(20,24))
 print(f'\n Password to ipSec {ipsec_pwd}')
 local_addr = octet_1+'.'+octet_2+'.'+octet_3+'.'+'1'
 
@@ -33,7 +34,7 @@ credentials_file.write(f'Address of VPN server {server_ip_addr}\n\n')
 list_of_value = []
 list_of_keys = []
 for cl_number in range(1, int(count_of_clients)+1):
-    password = generate_password(randint(10,16))
+    password = generate_password(randint(16,16))
     username = client_prefix+str(cl_number)
     list_of_value.append(password)
     list_of_keys.append(username)
@@ -88,3 +89,7 @@ set api-ssl disabled=yes
 ''')
 
 config_file.close()
+
+
+
+print()
